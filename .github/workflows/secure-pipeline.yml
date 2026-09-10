@@ -1,0 +1,36 @@
+# governance-demo/checkout-api canonical demo workflow.
+# The `uses:` lines at 18, 24, 36 match inventory/fixtures/checkout-api.json.
+# Do not renumber this file.
+
+name: secure-pipeline
+
+on:
+  pull_request:
+  push:
+    branches: [main]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+
+      - name: Checkout source
+        uses: internal/actions/checkout@main
+
+      - name: Install toolchain
+        run: echo "install"
+
+      - name: Build project
+        uses: internal/actions/build@v2
+
+      - name: Run unit tests
+        run: echo "unit tests"
+
+      - name: Run integration tests
+        run: echo "integration tests"
+
+      - name: Package artifact
+        run: echo "package"
+
+      - name: Publish artifact
+        uses: internal/actions/publish@abc123def4567890abcdef1234567890abcdef12
