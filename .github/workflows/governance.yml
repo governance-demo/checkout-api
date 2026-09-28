@@ -1,0 +1,17 @@
+# Seeded into governance-demo/checkout-api as .github/workflows/governance.yml
+# This is the wire that connects the developer's pull request to Domo governance:
+# every PR calls the reusable policy-check workflow, which evaluates the repo and
+# publishes Domo Check Runs back onto the PR. Synthetic org only.
+name: governance
+
+on:
+  pull_request:
+
+jobs:
+  domo-policy-check:
+    uses: governance-demo/platform-shared-workflows/.github/workflows/policy-check.yml@main
+    permissions:
+      contents: read
+      checks: write
+      pull-requests: write
+    secrets: inherit
