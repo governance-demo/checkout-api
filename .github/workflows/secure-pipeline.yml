@@ -15,13 +15,13 @@ jobs:
     steps:
 
       - name: Checkout source
-        uses: internal/actions/checkout@abc123def4567890abcdef1234567890abcdef12
+        uses: internal/actions/checkout@main
 
       - name: Install toolchain
         run: echo "install"
 
       - name: Build project
-        uses: internal/actions/build@abc123def4567890abcdef1234567890abcdef12
+        uses: internal/actions/build@v2
 
       - name: Run unit tests
         run: echo "unit tests"
